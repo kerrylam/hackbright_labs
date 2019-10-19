@@ -15,24 +15,28 @@ while True:
     
 
     if len(tokens) <= 1:
-        print("Not enough arguments, please enter at least 2")
+        print("Not enough arguments, please enter at least 2.")
 
     elif len(tokens) <= 2:
-        num1 = float(tokens[1])
-        num2 = 0
-        print(num2)
+        if tokens[1].isdigit():
+            num1 = float(tokens[1])
+            num2 = 0
+        else:
+            print("Please enter a valid number.")
+       
+    elif len(tokens) > 3: 
+        print("Too many arguments, please enter only up to 3.")
 
     else:
         num1 = float(tokens[1])
         num2 = float(tokens[2])
-        print(num2)
 
     if input_string == 'q':
         break
 
-    elif tokens[0] in operators:
-        if tokens[0] == '+':
-            print(float(add(int(tokens[1]), int(tokens[2]))))
+    elif operator in operators:
+        if operator == '+':
+            print(add(num1, num2))
     else:
         print('Not a valid operator.')    
 

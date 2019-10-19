@@ -10,9 +10,22 @@ from arithmetic import *
 while True: 
     input_string = input()
     tokens = input_string.split(" ")
-#    num1 = tokens[1]
-#    num2 = tokens[2]
+    operator = tokens[0]
     operators = ['+', '-', '*', '/', 'square', 'cube', 'pow', 'mod']
+    
+
+    if len(tokens) <= 1:
+        print("Not enough arguments, please enter at least 2")
+
+    elif len(tokens) <= 2:
+        num1 = float(tokens[1])
+        num2 = 0
+        print(num2)
+
+    else:
+        num1 = float(tokens[1])
+        num2 = float(tokens[2])
+        print(num2)
 
     if input_string == 'q':
         break
@@ -22,5 +35,6 @@ while True:
             print(float(add(int(tokens[1]), int(tokens[2]))))
     else:
         print('Not a valid operator.')    
+
 
 # Your code goes here

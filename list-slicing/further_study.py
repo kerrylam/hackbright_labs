@@ -67,6 +67,9 @@ def custom_append(input_list, value):
 
     pass
 
+    # Kat's solution:
+    # input_list += [value]
+
 
 def custom_extend(input_list, second_list):
     """Append every item in second_list to input_list.
@@ -89,6 +92,10 @@ def custom_extend(input_list, second_list):
 
     pass
 
+    # Kat's solution:
+    #    for item in second_list:
+    #     input_list += [item]
+
 
 def custom_insert(input_list, index, value):
     """Insert value at index in the list.
@@ -109,6 +116,13 @@ def custom_insert(input_list, index, value):
 
     pass
 
+    # Kat's solution:
+    #     after_index = input_list[index:] # items located after the input index
+
+    # input_list[index:] = [value]
+
+    # for item in after_index:
+    #     input_list += [item] 
 
 def custom_remove(input_list, value):
     """Remove the first item of the value in list.
@@ -160,6 +174,11 @@ def custom_pop(input_list):
 
     return last_item
 
+    # Kat's solution:
+    #    item_to_pop = input_list[-1]
+    # del input_list[-1]
+
+    # return item_to_pop
 
 def custom_index(input_list, value):
     """Return the index of the first item of value found in input_list.
@@ -225,6 +244,12 @@ def custom_reverse(input_list):
 
     pass
 
+    # Kat's solution:
+    #     add_list = input_list[::-1]
+
+    #     for item in add_list:
+    #         input_list += [item]
+    #         del input_list[0]
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -273,6 +298,8 @@ def custom_equality(some_list, another_list):
 
     return False
 
+    # better solution:
+    # return some_list == another_list
 
 ##############################################################################
 # Please ask for a code review. Also, give your partner a high-five!

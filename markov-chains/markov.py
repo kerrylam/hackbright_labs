@@ -50,8 +50,10 @@ def make_chains(text_string):
     for i in range(len(words)-2):
         chain_key = (words[i], words[i+1])
 
-        if chain_key not in chains:
-            chains[chain_key] = []
+        chains[chain_key] = chains.get(chain_key, [])
+
+        # if chain_key not in chains:
+        #     chains[chain_key] = []
 
         chains[chain_key].append(words[i+2])
 
@@ -63,9 +65,16 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    words = []
+    tup_key = choice(list(chains.keys()))
+    words = list(tup_key)
+    word = choice(chains[tup_key])
 
-    # your code goes here
+    while word != None:
+        words.append(word)
+        new_tup_key = (words[-2], words[-1])
+        word = choice(chains[new_tup_key])
+        
+    # new_key = (tup_key[1], word)
 
     return " ".join(words)
 

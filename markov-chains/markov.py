@@ -11,10 +11,7 @@ def open_and_read_file(file_path):
     """
     file = open(file_path)
     text_string = file.read()
-
-    print('Look Here!!!!!')
-    print(type(text_string))
-    
+    file.close()  
 
     return text_string
 
@@ -39,14 +36,26 @@ def make_chains(text_string):
 
         >>> chains[('hi', 'there')]
         ['mary', 'juanita']
-        
+
         >>> chains[('there','juanita')]
         [None]
     """
 
     chains = {}
 
-    # your code goes here
+    words = text_string.split()
+    words.append(None)
+    # print(words)
+
+    for i in range(len(words)-2):
+        chain_key = (words[i], words[i+1])
+
+        if chain_key not in chains:
+            chains[chain_key] = []
+
+        chains[chain_key].append(words[i+2])
+
+    # print(chains)
 
     return chains
 

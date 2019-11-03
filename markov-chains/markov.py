@@ -86,29 +86,35 @@ def make_text(chains, n):
     """Return text from chains."""
  
     tup_key = choice(list(chains.keys()))
-    words = list(tup_key)  
+   
+    while tup_key[0].istitle() is False:
+        tup_key = choice(list(chains.keys()))
+
+    words = list(tup_key)
     word = choice(chains[tup_key])
    
-    while word != None:
+    # while word != None:
+    while word[-1] not in ['.', '?', '!']:
         words.append(word)
         new_tup_key = tuple(words[-n:])
         word = choice(chains[new_tup_key])
+    words.append(word)
         
     # new_key = (tup_key[1], word)
 
     return " ".join(words)
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
 # input_path = sys.argv[1]
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
 
 # Get a Markov chain
-chains = make_chains(input_text, 3)
+chains = make_chains(input_text, 2)
 
 # Produce random text
-random_text = make_text(chains, 3)
+random_text = make_text(chains, 2)
 
 print(random_text)

@@ -13,25 +13,21 @@ def open_and_read_file(file_path):
     file = open(file_path)
     text_string = file.read()
     file.close()  
-
     return text_string
 
 def make_chains(text_string, n):
-
     chains = {}
     words = text_string.split()
     words.append(None)
     # print(words)
-    for i in range(len(words)-n):
-        chain_key = tuple(words[i:i+n])
-
+    for i in range(len(words) - n):
+        chain_key = tuple(words[i:i + n])
         chains[chain_key] = chains.get(chain_key, [])
-
     # if chain_key not in chains:
     #     chains[chain_key] = []
-
-        chains[chain_key].append(words[i+n])
-
+        chains[chain_key].append(words[i + n])
+        # val = chains.get(chain_key, []).append(word)
+        # chains[chain_key] = val
     return chains
     
 
@@ -86,22 +82,18 @@ def make_text(chains, n):
     """Return text from chains."""
  
     tup_key = choice(list(chains.keys()))
-   
     while tup_key[0].istitle() is False:
         tup_key = choice(list(chains.keys()))
-
     words = list(tup_key)
     word = choice(chains[tup_key])
-   
     # while word != None:
+
     while word[-1] not in ['.', '?', '!']:
         words.append(word)
         new_tup_key = tuple(words[-n:])
         word = choice(chains[new_tup_key])
     words.append(word)
-        
     # new_key = (tup_key[1], word)
-
     return " ".join(words)
 
 

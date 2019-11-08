@@ -1,0 +1,1 @@
+The longer the sequence of words to the left of the arrow, the closer it becomes to the original text, as well as valid English, because there are fewer and fewer random successors. Here, we use bigrams (word pairs) and a successor, but we could use trigrams or n-grams (sequences of n words). The longer the n-gram, the closer you get to the source text.

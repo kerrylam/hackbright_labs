@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+  <head>    
+    <style>
+      body {
+        margin: 0;
+      }     
+      div {
+        display: inline-block;
+      } 
+      #rightbox {
+        margin: 50px 0px;
+      }
+      .black {
+        margin: 50px;
+        height: 100px;
+        width: 100px;
+        background-color: #000000; 
+      }
+      .red {
+        margin: 0;
+        height: 200px;
+        width: 350px;
+        background-color: red;
+      }
+      .blue {
+        margin: 0;
+        height: 200px;
+        width: 350px;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="red">
+      <div class="black"></div>
+      <div class="black" id="rightbox"></div>
+    </div><div class="blue"> <!-- put the divs next to each other for no white space -->
+      <div class="black"></div>
+      <div class="black" id="rightbox"></div>
+    </div>
+  </body>
+
+</html>

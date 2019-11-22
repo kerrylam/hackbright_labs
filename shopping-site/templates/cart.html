@@ -2,8 +2,14 @@
 {% extends 'base.html' %}
 
 {% block body %}
+    <ul>
+        {% for melon in melon_objects %}
+            <li> {{ melon.common_name }} {{ melon.price }} </li>
+        {% endfor %}
+    </ul>
 
-    <table class="table table-striped">
+    <h3>Total: {{ total_cost }} </h3>
+    <!-- <table class="table table-striped">
         <thead>
         <tr>
             <th>Melon Name</th>
@@ -40,7 +46,7 @@
         </tbody>
     </table>
 
-    <h3>Total: $27.00</h3>
+    <h3>Total: $27.00</h3> -->
 
     <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 

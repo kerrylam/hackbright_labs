@@ -69,25 +69,21 @@
       'hot chocolate': 2.50
     };
     // make coffee function
-    function makeCoffee() {
+    const makeCoffee = () => {
         coffeeImage.attr('src', 'static/coffee_machine.jpg');
-    }
-
-    function getCoffee() {
-        coffeeImage.attr('src', 'static/coffee_mug.jpg');   
-    }
-
-    function resetCoffee() {
-        coffeeImage.attr('src', 'static/coffee_beans.jpg');   
-    }    
-
-    function clickCoffee() {
-        makeCoffee();
         setTimeout(getCoffee, 1500);
-        setTimeout(resetCoffee, 3500);
     }
 
-    coffeeImage.click(clickCoffee);
+    const getCoffee = () => {
+        coffeeImage.attr('src', 'static/coffee_mug.jpg'); 
+        setTimeout(resetCoffee, 2500);
+    }
+
+    const resetCoffee = () => {
+        coffeeImage.attr('src', 'static/coffee_beans.jpg');   
+    }
+
+    coffeeImage.on('click', makeCoffee);
   </script>
 
 </body>

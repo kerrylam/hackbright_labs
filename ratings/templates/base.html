@@ -2,10 +2,22 @@
 <html>
 <head>
     <title>Ratings</title>
+    {% if session %}
+        <form action="/logout"><input type="submit" value="Log Out" style="float:right">
+        </form>
+    {% endif %}
 </head>
 
 <body>
     Ratings
+    <br>
+    {% with messages=get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        {{ message }}
+      {% endfor %}
+    {% endif %}
+    {% endwith %}
     <hr>
 
     {% block content %} put your content here {% endblock %}

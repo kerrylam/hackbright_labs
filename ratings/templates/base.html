@@ -5,6 +5,9 @@
     {% if session %}
         <form action="/logout"><input type="submit" value="Log Out" style="float:right">
         </form>
+    {% else %}
+        <form action="/login"><input type="submit" value="Log In" style="float:right">
+        </form>
     {% endif %}
 </head>
 

@@ -69,6 +69,28 @@ def show_movie(movie_id):
                            ratings=ratings)
 
 
+@app.route('/handle_rating', methods=["POST"])
+def handle_rating_by_user():
+    """Add or update movie rating by logged in user."""
+    user_rating = int(request.form.get("rating"))
+    user_id = int(session['user_id'])
+    movie_id = int(request.form.get("movie_id"))
+    old_rating = Rating.query.filter_by(user_id=user_id, movie_id=movie_id).first()
+
+
+    if old_rating:
+        old_rating.score = user_rating
+        db.session.commit()
+        message = 'Successfully updated rating.'
+
+    else:
+        new_rating = Rating(user_id=user_id, movie_id=movie_id, score=user_rating)
+        db.session.add(new_rating)
+        db.session.commit()
+        message = 'Successfully added rating.'
+
+    flash(message)
+    return redirect(f"/movies/{movie_id}")
 
 
 @app.route('/register')

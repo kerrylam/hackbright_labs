@@ -5,7 +5,22 @@
         Movie ID: {{ movie_id }}<br>
         Title: {{ title }}<br>
         Released At: {{ released_at }}<br>
-        IMDB: {{ imdb_url }}<br>
+        IMDB: {{ imdb_url }}<br><br>
+
+    {% if session %}
+    <form action="/handle_rating" method="POST">
+        <input type="hidden" name="movie_id" value="{{ movie_id }}">
+        Rating: 
+        <select name="rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+        <input type="submit">
+    </form>
+    {% endif %}
 
     <ul>
         {% for rating in ratings %}

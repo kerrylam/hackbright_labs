@@ -16,7 +16,7 @@ app.secret_key = "HOTPOT"
 
 # A secret key is needed to use Flask sessioning features
 
-# app.secret_key = 'this-should-be-something-unguessable'
+app.secret_key = 'this-should-be-something-unguessable'
 
 # Normally, if you refer to an undefined variable in a Jinja template,
 # Jinja silently ignores this. This makes debugging difficult, so we'll
@@ -77,31 +77,15 @@ def show_shopping_cart():
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
 
-<<<<<<< HEAD
     cart = session.get('cart', {})
-=======
-    cart = session['cart']
-    melon_objects = []
-    total_cost = 0
->>>>>>> 8c8c59296ccd3940e31bf934dab924e7ccaf4d31
 
-    for melon_id in cart:
-        melon_object = melons.get_by_id(melon_id)
-        melon_cost = melon_object.price * cart[melon_id]
-        melon_object.quantity = cart[melon_id]
-        melon_object.total = melon_cost
-        melon_objects.append(melon_object)
-        total_cost += melon_cost
-
-    return render_template("cart.html",
-                           melon_objects=melon_objects,
-                           total_cost=total_cost)
+    return render_template("cart.html")
 
 
 @app.route("/add_to_cart/<melon_id>")
 def add_to_cart(melon_id):
     """Add a melon to cart and redirect to shopping cart page.
-    s
+
     When a melon is added to the cart, redirect browser to the shopping cart
     page and display a confirmation message: 'Melon successfully added to
     cart'."""
@@ -117,7 +101,6 @@ def add_to_cart(melon_id):
     # - flash a success message
     # - redirect the user to the cart page
 
-<<<<<<< HEAD
     if 'cart' in session:
         cart = session['cart']
     else:
@@ -129,25 +112,6 @@ def add_to_cart(melon_id):
 
     flash("Melon added to cart.")    
 
-=======
-    # if not session['cart']:
-    #     session['cart'] = {}
-    # also another possible way to write this code
-    if not "cart" in session: 
-        session['cart'] = {}
-
-
-    # for melon_id, quantity in session['cart']:
-    session['cart'][melon_id] = session['cart'].get(melon_id, 0) + 1
-
-    # if melon_id in session['cart']:
-    #     session['cart'][melon_id] += 1
-    # else:
-    #     session['cart'][melon_id] = 1
-    
-    flash('You did it! You win HOTPOT')
-
->>>>>>> 8c8c59296ccd3940e31bf934dab924e7ccaf4d31
     return redirect('/cart')
 
 

@@ -77,13 +77,9 @@ def show_shopping_cart():
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
 
-<<<<<<< HEAD
-    cart = session.get('cart', {})
-=======
     cart = session['cart']
     melon_objects = []
     total_cost = 0
->>>>>>> 8c8c59296ccd3940e31bf934dab924e7ccaf4d31
 
     for melon_id in cart:
         melon_object = melons.get_by_id(melon_id)
@@ -117,19 +113,6 @@ def add_to_cart(melon_id):
     # - flash a success message
     # - redirect the user to the cart page
 
-<<<<<<< HEAD
-    if 'cart' in session:
-        cart = session['cart']
-    else:
-        cart = session['cart'] = {}
-
-    #Can also do cart = session.setdefault('cart', {})
-    
-    cart[melon_id] = cart.get(melon_id, 0) + 1
-
-    flash("Melon added to cart.")    
-
-=======
     # if not session['cart']:
     #     session['cart'] = {}
     # also another possible way to write this code
@@ -147,7 +130,6 @@ def add_to_cart(melon_id):
     
     flash('You did it! You win HOTPOT')
 
->>>>>>> 8c8c59296ccd3940e31bf934dab924e7ccaf4d31
     return redirect('/cart')
 
 
